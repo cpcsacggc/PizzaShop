@@ -6,3 +6,4 @@
 Gemfile.lock
 .idea/vcs.xml
 pizzashop.db
+/.idea/dataSources.xml
