@@ -8,6 +8,6 @@ function something()
 
   */
 }
-function add_to_cart(){
-  alert('hello');
+function add_to_cart(id){
+  alert("You've added pizza with id:" + id);
 }
