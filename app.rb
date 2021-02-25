@@ -6,19 +6,21 @@ require 'sinatra/activerecord'
 
 set :database, {adapter:'sqlite3', database:'pizzashop.db'}
 class Product < ActiveRecord::Base
-
 end
-
-get '/' do
+before do
   @products = Product.all
+end
+get '/' do
   erb :index
 end
 get '/about' do
   erb :about
 end
+
 post '/cart' do
 orders_input = params[:orders]
-@orders = parse_orders_input orders_input
+@items = parse_orders_input orders_input
+@test1 = Product.all
   erb :cart
 end
 
