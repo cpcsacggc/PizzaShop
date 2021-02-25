@@ -7,3 +7,9 @@ Gemfile.lock
 .idea/vcs.xml
 pizzashop.db
 /.idea/dataSources.xml
+
+yarn.lock
+node_modules/.yarn-integrity
+yarn.lock
+yarn.lock
+yarn.lock
