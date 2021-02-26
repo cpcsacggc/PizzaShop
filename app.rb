@@ -4,28 +4,38 @@ require 'sinatra'
 require 'sinatra/reloader'
 require 'sinatra/activerecord'
 
+set :bind, '0.0.0.0'
 set :database, {adapter:'sqlite3', database:'pizzashop.db'}
 class Product < ActiveRecord::Base
 end
-before do
-  @products = Product.all
-end
+
 get '/' do
+  @products = Product.all
   erb :index
 end
+
 get '/about' do
   erb :about
+end
+
+get '/contacts' do
+  erb "Under construction"
 end
 
 post '/cart' do
 orders_input = params[:orders]
 @items = parse_orders_input orders_input
-@test1 = Product.all
+
+@items.each do |item|
+  # id, cnt
+  item[0] = Product.find(item[0])
+end
+
   erb :cart
 end
 
 
-def parse_orders_input orders_input
+def parse_orders_input(orders_input)
   s1 = orders_input.split(/,/)
   arr = []
   s1.each do |x|
