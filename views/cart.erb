@@ -29,8 +29,8 @@
     </tbody>
 </table>
 
-<form action="" method="post" role="form">
-  <input  name="order[order_input]" type="hidden" value="<%= @orders_input %>">
+<form action="/place_order" method="post" role="form">
+  <input  name="order[orders_input]" type="hidden" value="<%= @orders_input %>">
   <div class="form-group">
     <label>Name</label>
     <input name="order[name]" type="text" class="form-control" placeholder="Your Name" value="<%=  %>" />

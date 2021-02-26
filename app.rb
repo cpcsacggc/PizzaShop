@@ -7,6 +7,9 @@ require 'sinatra/activerecord'
 set :database, {adapter:'sqlite3', database:'pizzashop.db'}
 class Product < ActiveRecord::Base
 end
+class Order < ActiveRecord::Base
+
+end
 before do
   @products = Product.all
 end
@@ -19,14 +22,18 @@ end
 
 post '/cart' do
   @orders_input = params[:orders]
-@items = parse_orders_input @orders_input
-@items.each do |item|
+  @items = parse_orders_input @orders_input
+  @items.each do |item|
   # id, cnt
   item[0] = Product.find(item[0])
 end
   erb :cart
 end
 
+post '/place_order' do
+  @order = Order.create params[:order]
+  erb "Thank you! your order has been placed."
+end
 
 def parse_orders_input orders_input
   s1 = orders_input.split(/,/)
